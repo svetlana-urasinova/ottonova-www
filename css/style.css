@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@300&family=Roboto:wght@400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #bbb;
+  color: black;
+  font: normal 1.2rem "Roboto", sans-serif;
+  padding: 30px;
+}
+
+.card {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  padding: 0;
+}
+.card__header {
+  background-color: #005b9f;
+  border-bottom: 2px groove #ddd;
+  color: white;
+  padding: 25px;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+.card__header h2 {
+  margin: 0;
+}
+.card__content {
+  padding: 25px;
+  padding-bottom: 60px;
+}
+
+.cities {
+  align-content: flex-start;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.city__content {
+  display: flex;
+  flex-direction: column;
+}
+.city__name-native {
+  color: #5eb8ff;
+  font: bold italic 1.4rem "Lora", serif;
+  margin-left: 5px;
+}
+.city__location {
+  margin-bottom: 20px;
+  position: relative;
+}
+.city__location .hint {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  clip: rect(0 0 0 0);
+  font-size: 0.8rem;
+  opacity: 0;
+  overflow-wrap: break-word;
+  padding: 10px;
+  position: absolute;
+  right: -15px;
+  text-align: center;
+  text-overflow: ellipsis;
+  top: -80px;
+  transition: opacity 300ms ease-in;
+  z-index: 1;
+}
+.city__map {
+  color: #005b9f;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0 2px;
+}
+.city__map:hover {
+  color: #0078d2;
+}
+.city__map:active {
+  filter: opacity(0.8);
+}
+.city__coords {
+  background-color: lemonchiffon;
+  border: 1px solid #999;
+  color: black;
+  font: normal 0.8rem "Courier new", monospace;
+  margin-bottom: 10px;
+  padding: 3px 5px;
+  white-space: nowrap;
+}
+.city__coords p {
+  margin: 0;
+}
+.city__map:hover ~ .hint {
+  clip: auto;
+  opacity: 1;
+  z-index: 1000;
+}
+.city__info {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+  margin: 0 5px;
+  padding: 20px 10px;
+}
+.city__info dl {
+  margin: 0;
+}
+.city__info dt {
+  font-weight: 500;
+}
+.city__info dt,
+.city__info dd {
+  display: inline-block;
+  margin: 0;
+}
+.city__info div {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+}
+.city__info div:last-child {
+  margin: 0;
+}
+.city__landmarks-list {
+  list-style: none;
+  padding: 0;
+  padding-top: 10px;
+}
+.city__landmarks-list li {
+  align-items: center;
+  display: flex;
+  padding: 0 5px 10px;
+}
+.city__landmarks-list li:last-child {
+  padding-bottom: 0;
+}
+.city__landmarks i {
+  color: #5d99c6;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-right: 15px;
+}
+
+/*# sourceMappingURL=style.css.map */
