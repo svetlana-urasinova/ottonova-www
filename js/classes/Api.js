@@ -1,7 +1,7 @@
 import { config } from './../config/api.js';
 
 export class Api {
-    #baseUrl = `http://${config.url}:${config.port}/api/cities`;
+    #baseUrl = `${config.url}cities/`
 
     async makeRequest(method, url) {
         const options = {
