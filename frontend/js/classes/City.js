@@ -8,10 +8,8 @@ export class City {
     #data;
 
     constructor(data) {
-        this.#elem = document.createElement('article');
-        this.#elem.classList.add('city');
         this.#data = data;
-        this.render();
+        this.createElem();
     }
 
     getElem() {
@@ -46,7 +44,9 @@ export class City {
         return country && continent ? `${country}, ${continent}` : `${country ?? ''}${$continent ?? ''}`;
     }
 
-    render() {
+    createElem() {
+        this.#elem = document.createElement('article');
+        this.#elem.classList.add('city');
         const searchUrl = this.createSearchUrl();
         const location = this.createLocation();
         const landmarks = this.createLandmarksList();
