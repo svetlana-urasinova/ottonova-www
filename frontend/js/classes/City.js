@@ -1,9 +1,9 @@
-import TemplateHandler from "./TemplateHandler.js";
+import { TemplateHandler } from "./TemplateHandler.js";
 import template from "../templates/City/main.template.js";
 import templateLandmark from "../templates/City/landmarks-item.template.js";
 import templateSearchUrl from "../templates/City/search-url.template.js";
 
-export default class City {
+export class City {
     #elem;
     #data;
 
@@ -24,7 +24,6 @@ export default class City {
              where q is for query (coorinates here), z is for zoom and ll is for marker */
         const { name, latitude, longitude } = this.#data;
         const uri_safe_name = encodeURI(name);
-        console.log(uri_safe_name)
         return TemplateHandler.handle(templateSearchUrl, { latitude, longitude, name: uri_safe_name });
     }
 

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@300&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed&family=Roboto:wght@400;500;700&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -9,26 +9,58 @@ html {
   padding: 0;
 }
 
+.app-root.light-theme {
+  --primary: #0288d1;
+  --primary-light: #5eb8ff;
+  --primary-dark: #005b9f;
+  --secondary: #64b5f6;
+  --secondary-light: #9be7ff;
+  --secondary-dark: #2286c3;
+  --surface: #bbb;
+  --surface-dark: #b6b6b6;
+  --card-bgr: white;
+  --base-bgr: #f1f1f1;
+  --default-border: #ddd;
+  --font-main: black;
+  --font-contrast: white;
+}
+
+.app-root.dark-theme {
+  --primary: #212121;
+  --primary-light: #484848;
+  --primary-dark: #000000;
+  --secondary: #90caf9;
+  --secondary-light: #c3fdff;
+  --secondary-dark: #5d99c6;
+  --surface: #777;
+  --surface-dark: #727272;
+  --card-bgr: #464646;
+  --base-bgr: #363636;
+  --default-border: #292929;
+  --font-main: white;
+  --font-contrast: white;
+}
+
 body {
-  background-color: #bbb;
-  background-image: linear-gradient(-45deg, #bbb 25%, #b6b6b6 0, #b6b6b6 50%, #bbb 0, #bbb 75%, #b6b6b6 0);
+  background-color: var(--surface);
+  background-image: linear-gradient(-45deg, var(--surface) 25%, var(--surface-dark) 0, var(--surface-dark) 50%, var(--surface) 0, var(--surface) 75%, var(--surface-dark) 0);
   background-position: bottom left;
   background-size: 10px 10px;
   background-repeat: repeat;
-  color: black;
+  color: var(--font-main);
   font: normal 1.2rem "Roboto", sans-serif;
   padding: 30px;
 }
 
 .card {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: white;
+  background-color: var(--card-bgr);
   border-radius: 10px;
   padding: 0;
 }
 .card__header {
-  background-color: #005b9f;
-  border-bottom: 2px groove #ddd;
+  background-color: var(--primary-dark);
+  border-bottom: 2px solid var(--primary-light);
   color: white;
   padding: 25px;
   overflow-wrap: break-word;
@@ -42,6 +74,37 @@ body {
   padding-bottom: 60px;
 }
 
+.btn {
+  border-radius: 5px;
+  background-color: var(--base-bgr);
+  border: 3px solid var(--default-border);
+  color: var(--font-main);
+  cursor: pointer;
+  font: normal 1.2rem "Roboto Condensed", Arial, sans-serif;
+  letter-spacing: 1px;
+  outline: none;
+  padding: 5px 15px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.theme-switcher__btn {
+  opacity: 0.8;
+}
+.theme-switcher__btn:hover {
+  opacity: 0.9;
+}
+.theme-switcher__btn:active {
+  opacity: 0.7;
+}
+
 .cities {
   align-content: flex-start;
   display: grid;
@@ -50,6 +113,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
@@ -61,22 +125,23 @@ body {
   flex-direction: column;
 }
 .city__name-native {
-  color: #5eb8ff;
+  color: var(--primary-light);
   font: bold italic 1.4rem "Lora", serif;
   margin-left: 5px;
 }
 .city__location {
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 30px;
   position: relative;
   text-align: right;
 }
 .city__location .hint {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
   border-radius: 5px;
+  border: 1px solid var(--default-border);
+  background-color: var(--base-bgr);
+  color: var(--font-main);
   clip: rect(0 0 0 0);
   font-size: 0.8rem;
   font-style: italic;
@@ -93,14 +158,14 @@ body {
   z-index: 1;
 }
 .city__map {
-  color: #005b9f;
+  color: var(--secondary-dark);
   cursor: pointer;
   display: inline-block;
   margin: 0 2px;
   transition: transform 0.3s ease-in;
 }
 .city__map:hover {
-  color: #0078d2;
+  color: var(--secondary);
 }
 .city__map:active {
   filter: opacity(0.8);
@@ -131,12 +196,13 @@ body {
 }
 .city__info {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  color: black;
+  border-radius: 5px;
+  border: 1px solid var(--default-border);
+  background-color: var(--base-bgr);
+  color: var(--font-main);
   font-size: 1rem;
   margin: 0 10px;
-  padding: 20px 10px;
+  padding: 20px;
   text-align: left;
 }
 .city__info dl {
@@ -154,9 +220,8 @@ body {
   margin: 0;
   margin-bottom: 20px;
 }
-.city__info dt:last-child,
-.city__info dd:last-child {
-  margin-bottom: 0;
+.city__landmarks dt, .city__landmarks dd {
+  margin-bottom: 10px;
 }
 .city__landmarks dd {
   display: block;
@@ -164,7 +229,6 @@ body {
 .city__landmarks-list {
   list-style: none;
   padding: 0;
-  padding-top: 10px;
 }
 .city__landmarks li {
   align-items: flex-start;
@@ -175,11 +239,17 @@ body {
   padding-bottom: 0;
 }
 .city__landmarks i {
-  color: #5d99c6;
+  color: var(--secondary-dark);
   display: inline-block;
   font-size: 0.8rem;
   margin-right: 15px;
   margin-top: 0.2rem;
+}
+.city__landmarks i:hover {
+  color: var(--secondary);
+}
+.city__landmarks i:active {
+  filter: opacity(0.8);
 }
 .city__landmarks i:hover {
   animation: rotate 1s ease-in;

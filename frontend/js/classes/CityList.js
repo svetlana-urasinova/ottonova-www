@@ -1,6 +1,6 @@
-import City from "./City.js";
+import { City } from "./City.js";
 
-export default class CityList {
+export class CityList {
     #cities = [];
     #elem;
 
