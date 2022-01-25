@@ -1,5 +1,5 @@
 # Ottonova coding challenge
 
-Demo:
+This part retrieves data about cities from the Node.js server and display it as cards.
 
-(in progress)
+[Demo](http://spacefugu.ru/ottonova/)
