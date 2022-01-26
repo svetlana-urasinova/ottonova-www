@@ -28,10 +28,12 @@ document.addEventListener('click', documentClickHandler);
 
 /* add some life to stars ;D */
 const starSecretAnimation = (obj) => {
-    obj.classList.add('marker-star--active');
-    setTimeout(() => {
-        obj.classList.remove('marker-star--active');
-    }, 1500);
+    if (!obj.classList.contains('marker-star--active')) {
+            obj.classList.add('marker-star--active');
+            setTimeout(() => {
+                obj.classList.remove('marker-star--active');
+            }, 1500);
+        }
 } 
 
 const modalOpen = (obj) => {

@@ -3,6 +3,7 @@
 @mixin link() {
   color: var(--secondary-dark);
   cursor: pointer;
+  text-underline-offset: 1px;
 
   &:hover {
     color: var(--secondary);
@@ -87,15 +88,18 @@ a {
   }
 
   &__icon {
-    margin-left: 10px;
+    margin-left: 1rem;
+
+    @media screen and (max-width: 600px) {
+      margin-left: 0.5rem;
+    }
   }
 }
 
 .cities {
   align-content: flex-start;
   display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 60px;
+  gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   list-style-type: none;
@@ -109,7 +113,6 @@ a {
   flex-direction: column;
 
   &__header {
-    border-radius: 10px 10px 0 0;
     flex: none;
   }
 
@@ -121,21 +124,20 @@ a {
 
   &__name-native {
     color: var(--primary-light);
-    font: bold italic 1.4rem "Lora", serif;
-    margin-left: 5px;
+    font: normal 1.2rem "Lora", serif;
   }
 
   &__location {
     font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
     position: relative;
     text-align: right;
 
     .modal {
       @include base-block();
       border: none;
-      bottom: -10px;
+      bottom: -0.5rem;
       display: block;
       height: 0;
       overflow: hidden;
@@ -166,14 +168,14 @@ a {
         color: var(--font-contrast);
         display: flex;
         justify-content: space-between;
-        padding: 5px 15px;
+        padding: 0.5rem;
       }
 
       &__title {
         font-size: 1.1rem;
         font-weight: 500;
         margin: 0;
-        padding: 0 10px 0 5px;
+        padding: 0 0.5rem;
       }
 
       &__close-button {
@@ -186,7 +188,7 @@ a {
         border: 1px solid var(--default-border);
         font-size: 1rem;
         font-weight: normal;
-        padding: 25px;
+        padding: 1.5rem;
       }
     }
   }
@@ -194,7 +196,7 @@ a {
   &__location-marker {
     @include link();
     display: inline-block;
-    margin: 0 2px;
+    margin: 0 0.2rem;
     transition: transform 0.3s ease-in;
 
     &:hover {
@@ -203,7 +205,6 @@ a {
 
     i {
       font-size: 1.3rem;
-      margin-left: 2px;
     }
   }
 
@@ -213,8 +214,8 @@ a {
     color: black;
     font: normal 0.9rem "Courier new", monospace;
     margin: 0;
-    margin-bottom: 20px;
-    padding: 5px;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
     white-space: nowrap;
 
     p {
@@ -225,8 +226,8 @@ a {
   &__info {
     @include base-block();
     font-size: 1rem;
-    margin: 0 10px;
-    padding: 20px;
+    margin: 0 0.5rem;
+    padding: 1rem;
     text-align: left;
     flex-grow: 1;
 
@@ -239,23 +240,24 @@ a {
     }
 
     dd {
-      padding-right: 10px;
+      padding-right: 0.5rem;
     }
 
     dt,
     dd {
       display: inline-block;
       margin: 0;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
   }
 
   &__landmarks {
     dt {
-      margin-bottom: 5px;
+      margin-bottom: 0.5rem;
     }
 
     dd {
+      display: block;
       padding-right: 0;
     }
 
@@ -267,14 +269,14 @@ a {
     li {
       align-items: flex-start;
       display: flex;
-      padding: 5px;
+      padding: 0.3rem;
     }
 
     .marker-star {
       color: var(--secondary-dark);
       display: inline-block;
       font-size: 0.8rem;
-      margin-right: 15px;
+      margin-right: 1rem;
       margin-top: 0.2rem;
 
       &--active {

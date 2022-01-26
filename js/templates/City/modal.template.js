@@ -4,7 +4,7 @@ const template = `
     <h2 class="modal__title">
         Coordinates
     </h2>
-    <button class="icon-btn modal__close-button" type="button">
+    <button class="icon-btn modal__close-button" type="button" aria-label="Close modal">
         <i class="fas fa-times"></i>
     </button>
 </div>
