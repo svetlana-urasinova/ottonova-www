@@ -25,7 +25,7 @@ export class CityList {
                 });
             })
             .catch(err => {
-                console.log(`Data loading error: ${err}`);
+                throw new Error(`Data loading error: ${err}`);
             });
     }
 }

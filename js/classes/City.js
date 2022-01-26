@@ -2,6 +2,7 @@ import { TemplateHandler } from "./TemplateHandler.js";
 import template from "../templates/City/main.template.js";
 import templateLandmark from "../templates/City/landmarks-item.template.js";
 import templateSearchUrl from "../templates/City/search-url.template.js";
+import Formatter from "./Formatter.js";
 
 export class City {
     #elem;
@@ -47,10 +48,14 @@ export class City {
     createElem() {
         this.#elem = document.createElement('article');
         this.#elem.classList.add('city');
+        const name = Formatter.toInseparatable(this.#data.name);
+        const population = Formatter.addSeparatorsToNumber(this.#data.population);
+        const latitude_dms = Formatter.degreeToDMS(this.#data.latitude);
+        const longitude_dms = Formatter.degreeToDMS(this.#data.longitude);
         const searchUrl = this.createSearchUrl();
         const location = this.createLocation();
         const landmarks = this.createLandmarksList();
-        const templateData = {...this.#data, searchUrl, location, landmarks};
+        const templateData = {...this.#data, name, population, latitude_dms, longitude_dms, searchUrl, location, landmarks};
         this.#elem.innerHTML = TemplateHandler.handle(template, templateData);
     }
 
