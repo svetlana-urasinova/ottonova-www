@@ -4,44 +4,44 @@ import { localStorageMock } from "./mocks/localStorage.js";
 const themeSwitcher = new ThemeSwitcher;
 
 /* theme list:
-    0: 'light-theme', 
-    1: 'dark-theme'  
+    'light-theme', 
+    'dark-theme'  
 */
 
 it('Should switch dark theme to light one', () => {
-    themeSwitcher.setCurrentTheme(0);
+    themeSwitcher.setCurrentTheme('light-theme');
     themeSwitcher.setNextTheme();
     const current = themeSwitcher.getCurrentTheme();
-    expect(current).toEqual(1);
+    expect(current).toEqual('dark-theme');
 });
 
 it('Should switch light theme to dark one', () => {
-    themeSwitcher.setCurrentTheme(1);
+    themeSwitcher.setCurrentTheme('dark-theme');
     themeSwitcher.setNextTheme();
     const current = themeSwitcher.getCurrentTheme();
-    expect(current).toEqual(0);
+    expect(current).toEqual('light-theme');
 });
 
 it('Should correctly update theme directly: theme from list', () => {
-    themeSwitcher.setCurrentTheme(0);
+    themeSwitcher.setCurrentTheme('dark-theme');
     const currentTheme = themeSwitcher.getCurrentTheme();
-    expect(currentTheme).toEqual(0);
+    expect(currentTheme).toEqual('dark-theme');
 });
 
 it('Should correctly update theme directly: theme not from list', () => {
-    themeSwitcher.setCurrentTheme(1) // in list
-    themeSwitcher.setCurrentTheme(5); // not in the list
+    themeSwitcher.setCurrentTheme('dark-theme') // in list
+    themeSwitcher.setCurrentTheme('another-theme'); // not in the list
     const currentTheme = themeSwitcher.getCurrentTheme();
-    expect(currentTheme).toEqual(1);
+    expect(currentTheme).toEqual('dark-theme');
 });
 
 it('Should tell if theme exists or not: theme from list', () => {
-    const res = themeSwitcher.ifThemeExists(0);
+    const res = themeSwitcher.ifThemeExists('light-theme');
     expect(res).toEqual(true);
 });
 
 it('Should tell if theme exists or not: theme not from list', () => {
-    const res = themeSwitcher.ifThemeExists(5);
+    const res = themeSwitcher.ifThemeExists('another-theme');
     expect(res).toEqual(false);
 })
 
@@ -53,19 +53,19 @@ describe('storage', () => {
     });
     
     it('Get current theme: should return valid theme from localStorage', () => {
-        window.localStorage.setItem('currentTheme', 1);
+        window.localStorage.setItem('currentTheme', 'dark-theme');
         const currentTheme = themeSwitcher.getCurrentTheme();
-        expect(currentTheme).toEqual(1);
+        expect(currentTheme).toEqual('dark-theme');
     });
 
     it('Get current theme: should reset invalid theme', () => {
-        window.localStorage.setItem('currentTheme', 5);
+        window.localStorage.setItem('currentTheme', 'another-theme');
         const currentTheme = themeSwitcher.getCurrentTheme();
-        expect(currentTheme).toEqual(0);
+        expect(currentTheme).toEqual('light-theme');
     });
 
     it('Get current theme: should reset empty theme', () => {
         const currentTheme = themeSwitcher.getCurrentTheme();
-        expect(currentTheme).toEqual(0);
+        expect(currentTheme).toEqual('light-theme');
     });
 });

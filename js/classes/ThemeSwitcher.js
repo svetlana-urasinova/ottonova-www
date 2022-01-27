@@ -32,38 +32,41 @@ export class ThemeSwitcher {
     }
 
     getCurrentTheme() {
+        const themes = this.getThemesList();
         const currentTheme = localStorage.getItem('currentTheme');
-        if (currentTheme === undefined || !this.ifThemeExists(currentTheme)) {
-            return 0; // default value
+        if (currentTheme === undefined || currentTheme === null || !this.ifThemeExists(currentTheme)) {
+            return themes[0]; // default value
         }
-        return Number(currentTheme);
+        return currentTheme;
     }
 
-    setCurrentTheme (key) {
-        const themes = this.getThemesList();
-        if (themes[key] !== undefined) { 
-            localStorage.setItem('currentTheme', key);
+    setCurrentTheme (theme) {
+        if (this.ifThemeExists(theme)) {
+            localStorage.setItem('currentTheme', theme);
         }
     }
 
     setNextTheme() {
         /* takes next theme from the list
             if the current theme is the last one, then takes the first from the list */
-        const newCurrentTheme = (this.getCurrentTheme() + 1) % this.#themes.length;   
-        this.setCurrentTheme(newCurrentTheme);
+        const themes = this.getThemesList();
+        const currentTheme = this.getCurrentTheme();
+        const currentThemeIndex = themes.findIndex(el => el === currentTheme);
+        const newTheme = themes[(currentThemeIndex + 1) % themes.length];
+        this.setCurrentTheme(newTheme);
     }
 
-    ifThemeExists(key) {
+    ifThemeExists(theme) {
         const themes = this.getThemesList();
-        return themes[key] !== undefined;
+        return themes.includes(theme);
     }
 
     updateTheme() {
         /* applies current theme to root element */
         const currentTheme = this.getCurrentTheme();
         const themes = this.getThemesList();
-        themes.forEach((theme, i) => {
-            if (i === currentTheme) {
+        themes.forEach(theme => {
+            if (theme === currentTheme) {
                 this.#rootElem.classList.add(theme);               
             } else {
                 this.#rootElem.classList.remove(theme);
