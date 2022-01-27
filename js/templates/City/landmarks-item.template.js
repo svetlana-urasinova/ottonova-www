@@ -1,3 +1,3 @@
-const template = `<li><span class="marker-star"><i class="fas fa-star"></i></span>%LANDMARK%</li>`;
+const template = `<li><span class="marker-star"><i class="_interactive fas fa-star"></i></span>%LANDMARK%</li>`;
 
 export default template;

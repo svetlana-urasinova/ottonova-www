@@ -1,4 +1,4 @@
-import { City } from './../classes/City.js';
+import { City } from './../classes/datamodels/City.js';
 const city = new City({});
 
 /* createSearchUrl(name, latitude, longitude) */
@@ -32,7 +32,7 @@ it('Create search URL: only name', () => {
 it('Create landmarks: proper object', () => {
     const landmarks = ['first', 'second'];
     const res = city.createLandmarksList(landmarks);
-    expect(res).toEqual("<li><span class=\"marker-star\"><i class=\"fas fa-star\"></i></span>first</li><li><span class=\"marker-star\"><i class=\"fas fa-star\"></i></span>second</li>");
+    expect(res).toEqual("<li><span class=\"marker-star\"><i class=\"_interactive fas fa-star\"></i></span>first</li><li><span class=\"marker-star\"><i class=\"_interactive fas fa-star\"></i></span>second</li>");
 });
 
 it('Create landmarks: empty object', () => {

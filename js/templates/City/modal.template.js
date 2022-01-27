@@ -5,7 +5,7 @@ const template = `
         Coordinates
     </h2>
     <button class="icon-btn modal__close-button" type="button" aria-label="Close modal">
-        <i class="fas fa-times"></i>
+        <i class="_interactive fas fa-times"></i>
     </button>
 </div>
 <div class="modal__content">

@@ -1,9 +1,9 @@
-import { TemplateHandler } from "./TemplateHandler.js";
-import { ErrorHandler } from "./ErrorHandler.js";
-import template from "../templates/City/main.template.js";
-import templateLandmark from "../templates/City/landmarks-item.template.js";
-import templateSearchUrl from "../templates/City/search-url.template.js";
-import Formatter from "./Formatter.js";
+import { TemplateHandler } from "./../TemplateHandler.js";
+import { ErrorHandler } from "./../ErrorHandler.js";
+import template from "../../templates/City/main.template.js";
+import templateLandmark from "../../templates/City/landmarks-item.template.js";
+import templateSearchUrl from "../../templates/City/search-url.template.js";
+import Formatter from "./../Formatter.js";
 
 export class City {
     #elem;
@@ -78,6 +78,7 @@ export class City {
             landmarks
         };
         this.#elem.innerHTML = TemplateHandler.handle(template, templateData);
+        return this.#elem;
     }
 
 }
