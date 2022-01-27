@@ -12,8 +12,7 @@ const api = new Api;
 const data = api.getData();
 
 /* creates list of city elements */
-const listElem = document.querySelector('.cities');
-const list = new CityList(listElem);
+const list = new CityList;
 list.render(data);
 
 const documentClickHandler = (event) => {
@@ -71,4 +70,4 @@ const listClickHandler = (event) => {
         modalClose(modal);
     }
 }
-listElem.addEventListener('click', listClickHandler);
+list.getElem().addEventListener('click', listClickHandler);

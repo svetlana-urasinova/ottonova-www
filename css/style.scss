@@ -38,6 +38,10 @@ a {
   color: var(--font-main);
 }
 
+.hidden {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -168,14 +172,13 @@ a {
         color: var(--font-contrast);
         display: flex;
         justify-content: space-between;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
       }
 
       &__title {
         font-size: 1.1rem;
         font-weight: 500;
         margin: 0;
-        padding: 0 0.5rem;
       }
 
       &__close-button {
@@ -188,7 +191,7 @@ a {
         border: 1px solid var(--default-border);
         font-size: 1rem;
         font-weight: normal;
-        padding: 1.5rem;
+        padding: 1rem;
       }
     }
   }
@@ -208,7 +211,7 @@ a {
     }
   }
 
-  &__coords {
+  &-coords {
     background-color: lemonchiffon;
     border: 1px solid #999;
     color: black;
@@ -218,8 +221,8 @@ a {
     padding: 0.3rem;
     white-space: nowrap;
 
-    p {
-      margin: 0;
+    &__city-name {
+      white-space: nowrap;
     }
   }
 

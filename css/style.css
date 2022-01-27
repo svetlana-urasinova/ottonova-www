@@ -11,6 +11,10 @@ a:active {
   filter: opacity(0.8);
 }
 
+.hidden {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -137,13 +141,12 @@ a:active {
   color: var(--font-contrast);
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 .city__location .modal__title {
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0;
-  padding: 0 0.5rem;
 }
 .city__location .modal__close-button {
   color: inherit;
@@ -154,7 +157,7 @@ a:active {
   border: 1px solid var(--default-border);
   font-size: 1rem;
   font-weight: normal;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 .city__location-marker {
   color: var(--secondary-dark);
@@ -176,7 +179,7 @@ a:active {
 .city__location-marker i {
   font-size: 1.3rem;
 }
-.city__coords {
+.city-coords {
   background-color: lemonchiffon;
   border: 1px solid #999;
   color: black;
@@ -186,8 +189,8 @@ a:active {
   padding: 0.3rem;
   white-space: nowrap;
 }
-.city__coords p {
-  margin: 0;
+.city-coords__city-name {
+  white-space: nowrap;
 }
 .city__info {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);

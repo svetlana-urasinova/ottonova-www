@@ -63,6 +63,9 @@ html {
     background-size: 10px 10px;
     background-repeat: repeat;
     color: var(--font-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   .card {
@@ -124,6 +127,7 @@ html {
     border: 1px solid var(--surface);
     border-color: #999;
     display: flex;
+    flex: none;
     flex-direction: row;
     justify-content: space-between;
     position: sticky;
@@ -148,8 +152,10 @@ html {
   }
 
   main {
+    flex: auto;
     padding: 1.5rem;
-  
+    position: relative;
+
     @media screen and (max-width: 600px) {
       padding: 0;
     }
