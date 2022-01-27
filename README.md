@@ -2,4 +2,8 @@
 
 This part retrieves data about cities from the Node.js server and display it as cards.
 
-[Demo](http://spacefugu.ru/ottonova/)
+## Testing
+
+Tests could be launched by jest (npm install required)
+
+[Demo (working with backend part deployed on heroku)](http://spacefugu.ru/ottonova/)
