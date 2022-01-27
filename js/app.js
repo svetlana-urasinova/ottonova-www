@@ -8,11 +8,8 @@ import { documentClickHandler, citiesContainerClickHandler } from "./eventHandle
 const registry = new Registry;
 
 /* switches between dark and light theme */
-// const themeSwitcher = new ThemeSwitcher();
-// const buttonThemeSwitcher = document.querySelector('.theme-switcher__btn');
-// buttonThemeSwitcher.addEventListener('click', () => { themeSwitcher.handler()});
-
 registry.set('themeswitcher', new ThemeSwitcher);
+registry.get('themeswitcher').start();
 registry.set('api', new Api);
 registry.set('loader', new Loader);
 
