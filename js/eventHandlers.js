@@ -20,8 +20,8 @@ const modalCloseAll = () => {
 }
 
 export const documentClickHandler = (event) => {
-    const elem = event.target;
-    if (!elem.classList.contains('modal')) {
+    const modalElem = event.target.closest('.modal--active');
+    if (!modalElem) {
         modalCloseAll();
     }
 }
