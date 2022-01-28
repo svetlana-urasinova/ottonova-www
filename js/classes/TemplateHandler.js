@@ -5,7 +5,7 @@
 export class TemplateHandler {
     static handle (template, data) {
         Object.keys(data).forEach(key => {
-            const re = new RegExp(`%${key.toUpperCase()}%`, 'g');
+            const re = new RegExp(`%_${key.toUpperCase()}_%`, 'g');
             template = template.replace(re, data[key] ?? '');
         });
 
@@ -16,7 +16,7 @@ export class TemplateHandler {
     }
 
     static removeNonReplacedTemplateStrings (template) {
-        return template.replace(/\s?%\w+%/ig, '');
+        return template.replace(/\s?%_[A-Z_]+_%/g, '');
     }
 
     static removeEmptyAttributes (template) {

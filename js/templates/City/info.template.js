@@ -5,7 +5,7 @@ const template = `
             Population:
         </dt>
         <dd>
-            %POPULATION_FORMATTED%
+            %_POPULATION_FORMATTED_%
         </dd>
     </div>
     <div class="city__founded">
@@ -13,14 +13,14 @@ const template = `
             The foundation date:
         </dt>
         <dd>
-            %FOUNDED%
+            %_FOUNDED_%
         </dd>
     </div>
     <div class="city__landmarks">
         <dt>Famous landmarks:</dt>
             <dd>
                 <ul class="city__landmarks-list">
-                    %LANDMARKS_STR%    
+                    %_LANDMARKS_STR_%    
                 </ul>        
             </dd>
         </dl>
