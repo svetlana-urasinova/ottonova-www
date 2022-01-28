@@ -142,13 +142,13 @@ it(`Add separators: NaN`, () => {
 it(`Degrees to DMS: degrees`, () => {
     const degrees = 12.345;
     const res = Formatter.degreesToDMS(degrees);
-    expect(res).toEqual(`12&deg;20&prime;42&Prime;`);
+    expect(res).toEqual(`12&deg;20&prime;42&Prime;N`);
 });
 
 it(`Degrees to DMS: negative degrees`, () => {
     const degrees = -12.345;
     const res = Formatter.degreesToDMS(degrees);
-    expect(res).toEqual(`-12&deg;20&prime;42&Prime;`);
+    expect(res).toEqual(`12&deg;20&prime;42&Prime;S`);
 });
 
 it(`Degrees to DMS: too big`, () => {
@@ -169,8 +169,8 @@ it(`Degrees to DMS: too small`, () => {
 
 it(`Degrees to DMS: string degrees`, () => {
     const degrees = '67.890';
-    const res = Formatter.degreesToDMS(degrees);
-    expect(res).toEqual(`67&deg;53&prime;24&Prime;`);
+    const res = Formatter.degreesToDMS(degrees, 'y');
+    expect(res).toEqual(`67&deg;53&prime;24&Prime;E`);
 });
 
 it(`Degrees to DMS: non-numeric string`, () => {

@@ -28,7 +28,12 @@ export default class Formatter {
 
     /* convert decimal degrees to degrees+minutes+seconds for more readable displaying */
     /* example: 12.345° -> 12°20'42" */
-    static degreesToDMS(coord) {
+    static degreesToDMS(coord, axis="x") {
+        const directions = {
+            x: { pos: "N", neg: "S"},
+            y: { pos: "E", neg: "W"}
+        }
+        
         if (this.isStringNumeric(coord)) {
             coord = Number(coord);
         }
@@ -40,7 +45,8 @@ export default class Formatter {
 
         const minutesInDegree = 60;
         const secondsInMinute = 60;       
-        const sign = coord < 0 ? '-' : '';
+        //const sign = coord < 0 ? '-' : '';
+        const direction = coord < 0 ? directions[axis]["neg"] : directions[axis]["pos"];
 
         let secondsRest = Math.abs(coord) * minutesInDegree * secondsInMinute;
         const degrees = Math.floor(Math.abs(coord));
@@ -48,6 +54,6 @@ export default class Formatter {
         const minutes = Math.floor(secondsRest / secondsInMinute);
         secondsRest -= minutes * secondsInMinute;
         const seconds = Math.floor(secondsRest);
-        return `${sign}${degrees}&deg;${minutes}&prime;${seconds}&Prime;`;
+        return `${degrees}&deg;${minutes}&prime;${seconds}&Prime;${direction}`;
     }
 }

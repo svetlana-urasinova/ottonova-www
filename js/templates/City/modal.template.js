@@ -9,7 +9,7 @@ const template = `
     </button>
 </div>
 <div class="modal__content">
-<pre class="city-coords">%_LATITUDE_DMS_%&nbsp;&nbsp;%_LONGITUDE_DMS_%</pre>
+<pre class="city-coords">%_LATITUDE_DMS_%,&nbsp;%_LONGITUDE_DMS_%</pre>
 Click <a href="%_SEARCHURL_%" target="_blank">here</a> to find <span class="city-coords__city-name">%_NAME_%</span><br>in Google Maps
 </div>
 </div>

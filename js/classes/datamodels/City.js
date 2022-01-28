@@ -22,7 +22,7 @@ export class City {
             "https://www.google.com/maps?q=40.416775,-3.703790+(Madrid)&z=13&ll=40.416775,-3.703790",
              where q is for query (coorinates here), z is for zoom and ll is for marker */
         if (!name || !latitude || !longitude) {
-            const errorMsg = ErrorHandler.createMsgVariablesAreMissing({name, latitude, longitude });
+            const errorMsg = ErrorHandler.createMsgVariablesAreMissing({ name, latitude, longitude });
             ErrorHandler.handle(errorMsg, name);
             return '';
         }
@@ -36,12 +36,12 @@ export class City {
         */
 
         if (!Array.isArray(landmarks)) {
-            ErrorHandler.handle({ msg: `Corrupt landmarks!`});
+            ErrorHandler.handle({ msg: `Corrupted landmarks!` });
             return '';
         }
 
-        if (landmarks.length === 0) { 
-            return ''; 
+        if (landmarks.length === 0) {
+            return '';
         }
         return landmarks.map(landmark => TemplateHandler.handle(templateLandmark, { landmark })).join('');
     }
@@ -53,29 +53,28 @@ export class City {
             if only continent: "continent"
             if both are undefined: empty string
         */
-        return country && continent ? `${country}, ${continent}` : `${country ?? ''}${continent ?? ''}`;
+        const parts = [country, continent].filter(el => el && el !== '')
+        return country || continent ? parts.join(', ') : '';
+    }
+
+    createAdditionalData () {
+        const { name, country, continent, population, latitude, longitude, landmarks } = this.#data;
+        const population_formatted = Formatter.addSeparatorsToNumber(population);
+        const latitude_dms = Formatter.degreesToDMS(latitude, "x");
+        const longitude_dms = Formatter.degreesToDMS(longitude, "y");
+        const searchUrl = this.createSearchUrl(name, latitude, longitude);
+        const location = this.createLocation(country, continent);
+        const landmarks_str = this.createLandmarksList(landmarks);
+        return { population_formatted, latitude_dms, longitude_dms, searchUrl, location, landmarks_str };
     }
 
     createElem() {
         this.#elem = document.createElement('article');
         this.#elem.classList.add('city');
 
-        const { name, country, continent, population, latitude, longitude, landmarks } = this.#data;
-        const population_formatted = Formatter.addSeparatorsToNumber(population);
-        const latitude_dms = Formatter.degreesToDMS(latitude);
-        const longitude_dms = Formatter.degreesToDMS(longitude);
-        const searchUrl = this.createSearchUrl(name, latitude, longitude);
-        const location = this.createLocation(country, continent);
-        const landmarks_str = this.createLandmarksList(landmarks);
         const templateData = {
             ...this.#data,
-            population_formatted,
-            landmarks_str,
-            latitude_dms,
-            longitude_dms,
-            searchUrl,
-            location,
-            landmarks
+            ...this.createAdditionalData()
         };
         this.#elem.innerHTML = TemplateHandler.handle(template, templateData);
         return this.#elem;

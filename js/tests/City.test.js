@@ -29,7 +29,7 @@ it('Create search URL: only name', () => {
 /* createLandmarksList(landmarks) */
 /* should return an empty string or a ul-content  */
 
-it('Create landmarks: proper object', () => {
+it('Create landmarks: valid object', () => {
     const landmarks = ['first', 'second'];
     const res = city.createLandmarksList(landmarks);
     expect(res).toEqual("<li><span class=\"marker-star\"><i class=\"_interactive fas fa-star\"></i></span>first</li><li><span class=\"marker-star\"><i class=\"_interactive fas fa-star\"></i></span>second</li>");
@@ -46,7 +46,7 @@ it('Create landmarks: string', () => {
     console.error = jest.fn();
     const res = city.createLandmarksList(landmarks);
     expect(res).toEqual('');
-    expect(console.error).toHaveBeenCalledWith('Corrupt landmarks!');
+    expect(console.error).toHaveBeenCalledWith('Corrupted landmarks!');
 });
 
 /* createLocation(country, continent) */
@@ -81,3 +81,12 @@ it('Create location: no arguments', () => {
     const res = city.createLocation(country, continent);
     expect(res).toEqual('');
 });
+
+it('Should create link without src, if no coordinates are defined', () => {
+    const elem = city.createElem();
+    const links = elem.querySelectorAll('a');
+    for (let i = 0; i < links.length; i++) {
+        expect(links[i].src).toEqual(undefined);
+    }
+});
+
