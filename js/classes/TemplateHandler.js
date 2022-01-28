@@ -10,11 +10,16 @@ export class TemplateHandler {
         });
 
         template = this.removeNonReplacedTemplateStrings(template);
+        template = this.removeEmptyAttributes(template);
 
         return template;
     }
 
     static removeNonReplacedTemplateStrings (template) {
-        return template.replace(/\s?[\w-]+\="%\w+%"/ig, '');
+        return template.replace(/\s?%\w+%/ig, '');
+    }
+
+    static removeEmptyAttributes (template) {
+        return template.replace(/\s?[\w-]+\=""/ig, '');
     }
 }
