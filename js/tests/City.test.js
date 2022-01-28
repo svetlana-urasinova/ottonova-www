@@ -5,11 +5,11 @@ const city = new City({});
 /* should create a proper url from parameters  */
 
 it('Create search URL: all parameters', () => {
-    const name = 'Test';
+    const name = 'Test City';
     const latitude = '12.345';
     const longitude = '-67.890';
     const res = city.createSearchUrl(name, latitude, longitude);
-    expect(res).toEqual("https://www.google.com/maps?q=12.345,-67.890+(Test)&z=13&ll=12.345,-67.890");
+    expect(res).toEqual("https://www.google.com/maps?q=12.345,-67.890+(Test%20City)&z=13&ll=12.345,-67.890");
 });
 
 it('Create search URL: no parameters', () => {
