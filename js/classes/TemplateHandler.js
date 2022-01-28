@@ -9,6 +9,12 @@ export class TemplateHandler {
             template = template.replace(re, data[key] ?? '');
         });
 
+        template = this.removeNonReplacedTemplateStrings(template);
+
         return template;
+    }
+
+    static removeNonReplacedTemplateStrings (template) {
+        return template.replace(/\s?[\w-]+\="%\w+%"/ig, '');
     }
 }
