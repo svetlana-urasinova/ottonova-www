@@ -79,6 +79,7 @@ a {
   &__btn {
     align-items: center;
     display: flex;
+
     flex-direction: row;
     opacity: 0.7;
 
@@ -141,16 +142,17 @@ a {
     .modal {
       @include base-block();
       border: none;
-      bottom: -0.5rem;
+      top: 100%;
       display: block;
       height: 0;
+      margin-top: 0.5rem;
       overflow: hidden;
       overflow-wrap: break-word;
       position: absolute;
       right: 0;
       text-align: center;
       text-overflow: ellipsis;
-      transform: translateY(100%) scale(0.8);
+      transform: scale(0);
       width: 0;
       width: 100%;
       z-index: 10;
@@ -158,12 +160,8 @@ a {
       &--active {
         height: auto;
         width: auto;
-        animation: scale 0.2s ease-out forwards;
-        
-        @keyframes scale {
-          100% {
-            transform: translateY(100%) scale(1);
-        }}
+        transform: scale(1);
+        transition: transform 0.2s ease-in-out;
       } 
 
       &__header {
@@ -176,14 +174,15 @@ a {
       }
 
       &__title {
-        font-size: 1.1rem;
         font-weight: 500;
+        font-size: 1rem;
         margin: 0;
       }
 
       &__close-button {
         color: inherit;
         display: inline-block;
+        font-size: 1rem;
         vertical-align: bottom;
       }
 

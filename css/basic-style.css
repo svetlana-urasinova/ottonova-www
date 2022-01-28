@@ -61,6 +61,47 @@ body {
   min-height: 100vh;
 }
 
+header {
+  align-items: center;
+  background: var(--surface-dark);
+  border: 1px solid var(--surface);
+  border-color: #999;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+  padding: 0.8rem;
+  top: 0;
+  z-index: 100;
+}
+header .main-title {
+  color: var(--font-main);
+  font: normal 1.5rem "Roboto", sans-serif;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 600px) {
+  header .main-title {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+main {
+  flex: auto;
+  padding: 1.5rem;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  main {
+    padding: 0;
+  }
+}
+
 .card {
   background-color: var(--card-bgr);
   border-radius: 10px;
@@ -84,6 +125,7 @@ body {
 @media screen and (max-width: 600px) {
   .card__header {
     border-radius: 0;
+    padding: 0.5rem;
   }
 }
 .card__header h2 {
@@ -109,49 +151,8 @@ body {
 }
 @media screen and (max-width: 600px) {
   .btn {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.6rem;
-  }
-}
-
-header {
-  align-items: center;
-  background: var(--surface-dark);
-  border: 1px solid var(--surface);
-  border-color: #999;
-  display: flex;
-  flex: none;
-  flex-direction: row;
-  justify-content: space-between;
-  position: sticky;
-  padding: 0.8rem;
-  top: 0;
-  z-index: 100;
-}
-header h1 {
-  color: var(--font-main);
-  font: normal 1.5rem "Roboto", sans-serif;
-  margin: 0;
-  margin-left: 1rem;
-  letter-spacing: 2px;
-}
-@media screen and (max-width: 600px) {
-  header h1 {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    margin-left: 0;
-    margin-right: 1rem;
-  }
-}
-
-main {
-  flex: auto;
-  padding: 1.5rem;
-  position: relative;
-}
-@media screen and (max-width: 600px) {
-  main {
-    padding: 0;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
   }
 }
 
