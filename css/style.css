@@ -1,4 +1,162 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed&family=Roboto:wght@400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.app-root.light-theme {
+  --primary: #0288d1;
+  --primary-light: #5eb8ff;
+  --primary-dark: #005b9f;
+  --secondary: #64b5f6;
+  --secondary-light: #9be7ff;
+  --secondary-dark: #2286c3;
+  --surface: #bbb;
+  --surface-dark: #b6b6b6;
+  --card-bgr: white;
+  --base-bgr: #f1f1f1;
+  --default-border: #ddd;
+  --font-main: black;
+  --font-contrast: white;
+}
+
+.app-root.dark-theme {
+  --primary: #212121;
+  --primary-light: #484848;
+  --primary-dark: #000000;
+  --secondary: #90caf9;
+  --secondary-light: #c3fdff;
+  --secondary-dark: #5d99c6;
+  --surface: #777;
+  --surface-dark: #727272;
+  --card-bgr: #464646;
+  --base-bgr: #363636;
+  --default-border: #292929;
+  --font-main: #f5f5f5;
+  --font-contrast: white;
+}
+
+html {
+  font: normal 16px "Roboto", sans-serif;
+}
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+body {
+  background-color: var(--surface);
+  background-image: linear-gradient(-45deg, var(--surface) 25%, var(--surface-dark) 0, var(--surface-dark) 50%, var(--surface) 0, var(--surface) 75%, var(--surface-dark) 0);
+  background-position: bottom left;
+  background-size: 10px 10px;
+  background-repeat: repeat;
+  color: var(--font-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  align-items: center;
+  background: var(--surface-dark);
+  border: 1px solid var(--surface);
+  border-color: #999;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+  padding: 0.8rem;
+  top: 0;
+  z-index: 100;
+}
+header .main-title {
+  color: var(--font-main);
+  font: normal 1.5rem "Roboto", sans-serif;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 600px) {
+  header .main-title {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+}
+
+main {
+  flex: auto;
+  padding: 1.5rem;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  main {
+    padding: 0;
+  }
+}
+
+.card {
+  background-color: var(--card-bgr);
+  border-radius: 10px;
+  padding: 0;
+}
+@media screen and (max-width: 600px) {
+  .card {
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+}
+.card__header {
+  background-color: var(--primary-dark);
+  border-bottom: 2px solid var(--primary-light);
+  border-radius: 10px 10px 0 0;
+  color: white;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+  .card__header {
+    border-radius: 0;
+    padding: 0.5rem;
+  }
+}
+.card__header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.card__content {
+  padding: 1rem 1rem;
+  padding-bottom: 2rem;
+}
+
+.btn {
+  background-color: var(--base-bgr);
+  border: 3px solid var(--default-border);
+  color: var(--font-main);
+  cursor: pointer;
+  font: normal 1.2rem "Roboto Condensed", Arial, sans-serif;
+  letter-spacing: 1px;
+  outline: none;
+  padding: 0.3rem 1rem;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+  .btn {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
 a {
   color: var(--secondary-dark);
   cursor: pointer;
@@ -65,7 +223,8 @@ a:active {
 }
 @media screen and (max-width: 600px) {
   .theme-switcher__icon {
-    margin-left: 0.5rem;
+    display: none;
+    margin-left: 0;
   }
 }
 
@@ -186,6 +345,7 @@ a:active {
   margin-bottom: 1rem;
   padding: 0.3rem;
   white-space: nowrap;
+  width: 100%;
 }
 .city-coords__city-name {
   white-space: nowrap;
